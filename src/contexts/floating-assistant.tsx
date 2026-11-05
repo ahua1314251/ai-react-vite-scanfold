@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
-interface FloatingAssistantContextValue {
+export interface FloatingAssistantContextValue {
   chatOpen: boolean;
   pendingPrompt: string;
   pendingAutoSend: boolean;
@@ -10,6 +10,15 @@ interface FloatingAssistantContextValue {
 }
 
 const FloatingAssistantContext = createContext<FloatingAssistantContextValue | null>(null);
+
+const noopAssistant: FloatingAssistantContextValue = {
+  chatOpen: false,
+  pendingPrompt: '',
+  pendingAutoSend: false,
+  openChat: () => {},
+  closeChat: () => {},
+  clearPendingPrompt: () => {},
+};
 
 export function FloatingAssistantProvider({ children }: { children: React.ReactNode }) {
   const [chatOpen, setChatOpen] = useState(false);
@@ -37,16 +46,11 @@ export function FloatingAssistantProvider({ children }: { children: React.ReactN
   );
 
   return (
-    <FloatingAssistantContext.Provider value={value}>
-      {children}
-    </FloatingAssistantContext.Provider>
+    <FloatingAssistantContext.Provider value={value}>{children}</FloatingAssistantContext.Provider>
   );
 }
 
+/** Safe when provider is omitted (assistant disabled via config). */
 export function useFloatingAssistant(): FloatingAssistantContextValue {
-  const ctx = useContext(FloatingAssistantContext);
-  if (!ctx) {
-    throw new Error('useFloatingAssistant must be used within FloatingAssistantProvider');
-  }
-  return ctx;
+  return useContext(FloatingAssistantContext) ?? noopAssistant;
 }

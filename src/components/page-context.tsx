@@ -1,6 +1,7 @@
 import React from 'react';
 
-interface PageContextProps {
+/** PageContext — page header strip used by business pages and gallery. */
+export interface PageContextProps {
   title: string;
   description?: string;
   eyebrow?: string;

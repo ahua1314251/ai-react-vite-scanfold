@@ -1,14 +1,5 @@
-import {
-  Activity,
-  Boxes,
-  FormInput,
-  Home,
-  LayoutDashboard,
-  LucideIcon,
-  MousePointerClick,
-  Sparkles,
-  Table2,
-} from 'lucide-react';
+import { Home, LayoutDashboard, LucideIcon, Sparkles } from 'lucide-react';
+import { businessPages } from '../../pages/routes';
 
 export interface MenuNode {
   id: string;
@@ -18,55 +9,26 @@ export interface MenuNode {
   hidden?: boolean;
   url?: string;
   path?: string;
-  /** 首页内 Demo 区块 id，点击后平滑滚动 */
+  /** Gallery demo section id — scroll target on /gallery */
   section?: string;
   children?: MenuNode[];
 }
 
-/** 菜单叶子通过 section 滚动到首页 Demo 区块 */
+/** Keep short. Business pages: add a leaf with `path`. Gallery uses `section`. */
 export const NAV_MENUS: MenuNode[] = [
-  { id: 'home', label: '首页', icon: Home, description: '组件 Demo 总览', path: '/' },
+  { id: 'home', label: '首页', icon: Home, description: '业务首页占位', path: '/' },
+  ...businessPages.map(({ path, label, icon }) => ({ id: path, path, label, icon })),
   {
-    id: 'basics',
-    label: '基础控件',
-    icon: MousePointerClick,
-    description: '按钮、徽标、卡片等',
-    section: 'buttons',
+    id: 'gallery',
+    label: '组件 Gallery',
+    icon: LayoutDashboard,
+    description: '控件展厅（可选）',
+    path: '/gallery',
     children: [
-      { id: 'buttons', label: '按钮', icon: MousePointerClick, description: '主/次/危险按钮', section: 'buttons' },
-      { id: 'badges', label: '状态徽标', icon: Activity, description: 'StatusBadge 示例', section: 'badges' },
-      { id: 'cards', label: '卡片', icon: Boxes, description: 'SectionCard / 入口卡片', section: 'cards' },
+      { id: 'g-buttons', label: '按钮', icon: Sparkles, description: 'Button classes', path: '/gallery', section: 'buttons' },
+      { id: 'g-forms', label: '表单', icon: Sparkles, description: 'Field / Select', path: '/gallery', section: 'forms' },
+      { id: 'g-table', label: '表格', icon: Sparkles, description: 'Table / Pagination', path: '/gallery', section: 'table' },
     ],
-  },
-  {
-    id: 'forms',
-    label: '表单组件',
-    icon: FormInput,
-    description: '输入框、下拉、Combobox',
-    section: 'forms',
-    children: [
-      { id: 'fields', label: 'Field / Input', icon: FormInput, description: '表单字段容器', section: 'forms' },
-      { id: 'selects', label: 'EnumSelect', icon: LayoutDashboard, description: '枚举下拉', section: 'selects' },
-      { id: 'combobox', label: 'Combobox', icon: FormInput, description: '可搜索组合框', section: 'combobox' },
-    ],
-  },
-  {
-    id: 'data',
-    label: '数据展示',
-    icon: Table2,
-    description: '表格与分页',
-    section: 'table',
-    children: [
-      { id: 'table', label: '表格', icon: Table2, description: '列表示例', section: 'table' },
-      { id: 'pagination', label: '分页', icon: LayoutDashboard, description: 'Pagination', section: 'pagination' },
-    ],
-  },
-  {
-    id: 'assistant',
-    label: '助手',
-    icon: Sparkles,
-    description: '右下角悬浮助手',
-    section: 'assistant',
   },
 ];
 
