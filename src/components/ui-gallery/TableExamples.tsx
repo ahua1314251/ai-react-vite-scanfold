@@ -65,13 +65,13 @@ export default function TableExamples() {
 
         <DemoSection id="alerts" title="提示条" description="信息 / 警告 / 错误反馈">
           <div className="space-y-2.5">
-            <div className="rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm text-blue-700">
+            <div className="alert-info rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm text-blue-700">
               信息提示：这是一条普通操作反馈。
             </div>
-            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+            <div className="alert-warning rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
               警告提示：请确认后再继续操作。
             </div>
-            <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+            <div className="alert-error rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
               错误提示：提交失败，请稍后重试。
             </div>
           </div>

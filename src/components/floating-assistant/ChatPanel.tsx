@@ -388,7 +388,7 @@ export default function ChatPanel({
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 42, scale: 0.985 }}
             transition={{ type: 'spring', stiffness: 390, damping: 34 }}
-            className="fixed bottom-3 right-3 top-3 z-[9998] flex w-[min(680px,calc(100vw-24px))] flex-col overflow-hidden rounded-[24px] border border-white/70 bg-[#f5f5f7]/95 shadow-[-22px_18px_70px_rgba(15,23,42,0.16)] backdrop-blur-2xl"
+            className="assistant-panel fixed bottom-3 right-3 top-3 z-[9998] flex w-[min(680px,calc(100vw-24px))] flex-col overflow-hidden rounded-[24px] border border-white/70 bg-[#f5f5f7]/95 shadow-[-22px_18px_70px_rgba(15,23,42,0.16)] backdrop-blur-2xl"
             onClick={event => event.stopPropagation()}
           >
             <header className="flex h-[66px] flex-shrink-0 items-center gap-3 border-b border-black/[0.07] bg-white/75 px-4 backdrop-blur-xl sm:px-5">

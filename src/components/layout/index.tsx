@@ -6,6 +6,7 @@ import { useTheme } from '../../contexts/theme';
 import { NAV_MENUS,expandedIdsForPath } from './menu-config';
 import SidebarNode from './SidebarNode';
 import TopSearch from './TopSearch';
+import HeaderAccount from './HeaderAccount';
 const FloatingAssistant = lazy(() => import('../floating-assistant')); 
 
 const SIDEBAR_STORAGE_KEY = 'scaffold-sidebar-collapsed';
@@ -56,10 +57,10 @@ export default function Layout() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#f5f5f7] text-slate-800">
+    <div className="app-shell flex flex-col h-screen bg-[#f5f5f7] text-slate-800">
       <header className="flex-shrink-0 z-20">
         <div
-          className={`grid grid-cols-[minmax(0,1fr)_auto] items-center h-16 bg-white border-b border-black/[0.06] px-3 sm:px-4 gap-3 lg:gap-5 transition-[grid-template-columns] duration-200 ${
+          className={`app-header grid grid-cols-[minmax(0,1fr)_auto] items-center h-16 bg-white border-b border-black/[0.06] px-3 sm:px-4 gap-3 lg:gap-5 transition-[grid-template-columns] duration-200 ${
             sidebarCollapsed
               ? 'lg:grid-cols-[68px_minmax(280px,672px)_1fr]'
               : 'lg:grid-cols-[240px_minmax(280px,672px)_1fr]'
@@ -95,6 +96,7 @@ export default function Layout() {
             >
               {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
             </button>
+            <HeaderAccount />
           </div>
         </div>
       </header>
@@ -107,7 +109,7 @@ export default function Layout() {
       </div>}
       <div className="flex flex-1 min-h-0">
         <aside
-          className={`hidden md:flex flex-shrink-0 bg-[#f8f8fa] border-r border-black/[0.06] flex-col transition-[width] duration-200 ${
+          className={`app-sidebar hidden md:flex flex-shrink-0 bg-[#f8f8fa] border-r border-black/[0.06] flex-col transition-[width] duration-200 ${
             sidebarCollapsed ? 'w-[68px]' : 'w-60'
           }`}
         >
@@ -141,7 +143,7 @@ export default function Layout() {
             ))}
           </nav>
         </aside>
-        <main className="flex-1 min-w-0 min-h-0 overflow-hidden bg-[#f5f5f7]">
+        <main className="app-main flex-1 min-w-0 min-h-0 overflow-hidden bg-[#f5f5f7]">
           <Outlet />
         </main>
       </div>

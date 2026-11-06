@@ -41,7 +41,7 @@ export function EnumSelect({
   const selected = selectedIndex >= 0 ? options[selectedIndex] : undefined;
 
   const triggerBase = compact
-    ? 'flex h-8 w-full items-center justify-between gap-1.5 rounded-lg border border-black/[0.09] bg-white/90 px-2.5 text-left text-xs text-slate-700 shadow-[0_1px_1px_rgba(15,23,42,0.02)] transition-all focus:outline-none focus:border-blue-300 focus:ring-4 focus:ring-blue-500/[0.08]'
+    ? 'flex h-8 w-full items-center justify-between gap-1.5 rounded-lg border border-black/[0.09] bg-white/90 px-2.5 text-left text-xs text-slate-700 shadow-[0_1px_1px_rgba(15,23,42,0.02)] transition-[background-color,border-color,box-shadow,color] focus:outline-none focus:border-blue-300 focus:ring-4 focus:ring-blue-500/[0.08]'
     : `${inputClass} flex w-full items-center justify-between gap-2 text-left`;
 
   const closePanel = () => {
@@ -110,7 +110,7 @@ export function EnumSelect({
         aria-expanded={open}
         aria-controls={listboxId}
         disabled={disabled}
-        className={`${triggerBase} ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
+        className={`${triggerBase} ${clearable && !disabled && value !== '' ? 'pr-12' : ''} ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
         onClick={() => (open ? closePanel() : openPanel())}
         onKeyDown={handleKeyDown}
       >
@@ -118,29 +118,23 @@ export function EnumSelect({
           {selected ? selected.label : placeholder}
         </span>
         <span className="flex shrink-0 items-center gap-1">
-          {clearable && !disabled && value !== '' && (
-            <span
-              role="button"
-              tabIndex={0}
-              aria-label="清除已选"
-              className="flex h-4 w-4 items-center justify-center rounded-full text-slate-300 transition-colors hover:bg-slate-100 hover:text-slate-500"
-              onClick={event => {
-                event.stopPropagation();
-                onChange('');
-              }}
-              onKeyDown={event => {
-                if (event.key !== 'Enter' && event.key !== ' ') return;
-                event.preventDefault();
-                event.stopPropagation();
-                onChange('');
-              }}
-            >
-              <X size={12} />
-            </span>
-          )}
           <ChevronDown size={14} className={`shrink-0 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
         </span>
       </button>
+      {clearable && !disabled && value !== '' && (
+        <button
+          type="button"
+          aria-label="清除已选"
+          className="absolute right-7 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          onClick={() => {
+            onChange('');
+            closePanel();
+            buttonRef.current?.focus();
+          }}
+        >
+          <X size={12} />
+        </button>
+      )}
       {open && (
         <ul
           id={listboxId}

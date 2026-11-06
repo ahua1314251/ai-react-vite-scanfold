@@ -83,7 +83,7 @@ export default function TopSearch() {
         onKeyDown={onKeyDown}
         aria-label="搜索菜单"
         placeholder="搜索菜单或组件"
-        className="w-full h-9 pl-9 pr-14 rounded-xl bg-black/[0.035] border border-black/[0.04] text-[13px] text-slate-700 placeholder-slate-400 transition-all focus:outline-none focus:bg-white focus:border-blue-300 focus:ring-4 focus:ring-blue-500/[0.08]"
+        className="w-full h-9 pl-9 pr-14 rounded-xl bg-black/[0.035] border border-black/[0.04] text-[13px] text-slate-700 placeholder-slate-400 transition-[background-color,border-color,box-shadow,color] focus:outline-none focus:bg-white focus:border-blue-300 focus:ring-4 focus:ring-blue-500/[0.08]"
       />
       {keyword ? (
         <button

@@ -14,8 +14,11 @@ const useBrowserLayoutEffect = typeof window === 'undefined' ? useEffect : useLa
 
 function readInitialTheme(): ThemeMode {
   if (typeof window === 'undefined') return 'light';
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === 'dark' ? 'dark' : 'light';
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light';
+  } catch {
+    return 'light';
+  }
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -27,7 +30,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.classList.add(theme);
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
-    window.localStorage.setItem(STORAGE_KEY, theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // Storage may be unavailable; the theme still works for this session.
+    }
   }, [theme]);
 
   const value = useMemo<ThemeContextValue>(

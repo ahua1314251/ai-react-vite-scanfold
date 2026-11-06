@@ -179,7 +179,7 @@ export function Welcome({ onSelect }: { onSelect: (prompt: string) => void }) {
             key={item.title}
             type="button"
             onClick={() => onSelect(item.prompt)}
-            className="group min-h-[82px] rounded-2xl border border-black/[0.07] bg-white/80 px-4 py-3.5 text-left shadow-[0_1px_0_rgba(255,255,255,0.8),0_8px_26px_rgba(15,23,42,0.035)] transition-all hover:-translate-y-0.5 hover:border-black/[0.1] hover:bg-white hover:shadow-[0_12px_30px_rgba(15,23,42,0.07)]"
+            className="assistant-suggestion group min-h-[82px] rounded-2xl border border-black/[0.07] bg-white/80 px-4 py-3.5 text-left shadow-[0_1px_0_rgba(255,255,255,0.8),0_8px_26px_rgba(15,23,42,0.035)] transition-all hover:-translate-y-0.5 hover:border-black/[0.1] hover:bg-white hover:shadow-[0_12px_30px_rgba(15,23,42,0.07)]"
           >
             <span className="flex items-center gap-2.5">
               <span className="h-1.5 w-1.5 rounded-full bg-slate-400 transition-colors group-hover:bg-blue-500" />
@@ -529,8 +529,8 @@ export function Composer({
   onSend: () => void;
 }) {
   return (
-    <div className="flex-shrink-0 bg-gradient-to-b from-transparent via-[#f5f5f7]/95 to-[#f5f5f7] px-4 pb-4 pt-3 dark:via-[#151922]/95 dark:to-[#151922] sm:px-6 sm:pb-5">
-      <div className="mx-auto max-w-[610px] rounded-[20px] border border-black/[0.09] bg-white/90 px-3.5 pb-2.5 pt-3 shadow-[0_12px_38px_rgba(15,23,42,0.09),inset_0_1px_0_white] backdrop-blur-2xl transition-shadow focus-within:border-blue-300 focus-within:shadow-[0_14px_42px_rgba(15,23,42,0.1),0_0_0_3px_rgba(37,99,235,0.06)]">
+    <div className="assistant-composer-wrap flex-shrink-0 bg-gradient-to-b from-transparent via-[#f5f5f7]/95 to-[#f5f5f7] px-4 pb-4 pt-3 dark:via-[#151922]/95 dark:to-[#151922] sm:px-6 sm:pb-5">
+      <div className="assistant-composer mx-auto max-w-[610px] rounded-[20px] border border-black/[0.09] bg-white/90 px-3.5 pb-2.5 pt-3 shadow-[0_12px_38px_rgba(15,23,42,0.09),inset_0_1px_0_white] backdrop-blur-2xl transition-shadow focus-within:border-blue-300 focus-within:shadow-[0_14px_42px_rgba(15,23,42,0.1),0_0_0_3px_rgba(37,99,235,0.06)]">
         <div className="flex items-end gap-2.5">
           <textarea
             ref={inputRef}
@@ -553,7 +553,7 @@ export function Composer({
             onClick={onSend}
             disabled={!input.trim() || typing}
             aria-label="发送消息"
-            className="mb-0.5 grid h-9 w-9 flex-shrink-0 place-items-center rounded-full bg-blue-600 text-white shadow-sm transition-all hover:scale-[1.03] hover:bg-blue-500 active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-200"
+            className="assistant-send mb-0.5 grid h-9 w-9 flex-shrink-0 place-items-center rounded-full bg-blue-600 text-white shadow-sm transition-all hover:scale-[1.03] hover:bg-blue-500 active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-200"
           >
             <ArrowUp size={17} strokeWidth={2.3} />
           </button>

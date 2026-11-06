@@ -19,17 +19,6 @@
   color-scheme: light;
 }
 
-:root.dark,
-[data-theme='dark'] {
-  --bg-color: #151922;
-  --text-color: #e7eaf0;
-  --text-secondary: #9da7b7;
-  --surface: rgba(31, 37, 48, 0.9);
-  --surface-solid: #1f2530;
-  --surface-muted: #252c38;
-  --border-color: rgba(203, 213, 225, 0.12);
-  color-scheme: dark;
-}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -48,140 +37,6 @@ body {
   vector-effect: non-scaling-stroke;
 }
 
-/* Dark mode uses charcoal-blue surfaces and soft text instead of pure black/white. */
-.dark [class~="bg-[#f5f5f7]"],
-.dark [class~="bg-[#f8f8fa]"],
-.dark [class~="bg-[#fbfbfc]"],
-.dark [class~="bg-[#f5f5f7]/95"],
-.dark [class~="bg-[#f8f8fa]/95"] {
-  background-color: #151922 !important;
-}
-
-.dark .bg-white,
-.dark [class~="bg-white/95"],
-.dark [class~="bg-white/90"],
-.dark [class~="bg-white/80"],
-.dark [class~="bg-white/75"],
-.dark [class~="bg-white/70"],
-.dark [class~="bg-white/60"] {
-  background-color: var(--surface) !important;
-}
-
-.dark .bg-slate-50,
-.dark [class~="bg-slate-50/70"],
-.dark [class~="bg-slate-50/40"] {
-  background-color: #252c38 !important;
-}
-
-.dark .bg-slate-100,
-.dark .bg-slate-200,
-.dark .bg-slate-300 {
-  background-color: #303846 !important;
-}
-
-.dark [class~="bg-black/[0.025]"],
-.dark [class~="bg-black/[0.035]"],
-.dark [class~="bg-black/[0.045]"],
-.dark [class~="bg-black/[0.055]"] {
-  background-color: rgba(226, 232, 240, 0.06) !important;
-}
-
-.dark .bg-blue-50,
-.dark [class~="bg-blue-50/70"],
-.dark [class~="bg-blue-50/40"] {
-  background-color: rgba(59, 130, 246, 0.14) !important;
-}
-
-.dark .bg-blue-100 {
-  background-color: rgba(59, 130, 246, 0.2) !important;
-}
-
-.dark .bg-red-50,
-.dark [class~="bg-red-50/25"] {
-  background-color: rgba(239, 68, 68, 0.12) !important;
-}
-
-.dark .bg-red-100 {
-  background-color: rgba(239, 68, 68, 0.18) !important;
-}
-
-.dark .bg-amber-50 {
-  background-color: rgba(245, 158, 11, 0.12) !important;
-}
-
-.dark .bg-emerald-50 {
-  background-color: rgba(16, 185, 129, 0.12) !important;
-}
-
-.dark .text-slate-950,
-.dark .text-slate-900,
-.dark .text-slate-800 {
-  color: #e7eaf0 !important;
-}
-
-.dark .text-slate-700,
-.dark .text-slate-600 {
-  color: #c2c9d4 !important;
-}
-
-.dark .text-slate-500 {
-  color: #9da7b7 !important;
-}
-
-.dark .text-slate-400,
-.dark .text-slate-300 {
-  color: #7f8999 !important;
-}
-
-.dark .text-blue-700,
-.dark .text-blue-600,
-.dark .text-blue-500 {
-  color: #78a9ff !important;
-}
-
-.dark .border-slate-100,
-.dark .border-slate-200,
-.dark .border-slate-300,
-.dark [class*="border-black/["] {
-  border-color: var(--border-color) !important;
-}
-
-.dark [class~="placeholder-slate-400"]::placeholder {
-  color: #707b8b !important;
-}
-
-.dark [class~="hover:bg-slate-50"]:hover,
-.dark [class~="hover:bg-slate-100"]:hover,
-.dark [class~="hover:bg-slate-200"]:hover,
-.dark [class~="hover:bg-white"]:hover,
-.dark [class~="hover:bg-white/70"]:hover,
-.dark [class~="hover:bg-black/[0.04]"]:hover,
-.dark [class~="hover:bg-black/[0.055]"]:hover {
-  background-color: #2a3240 !important;
-}
-
-.dark [class~="hover:text-slate-900"]:hover,
-.dark [class~="hover:text-slate-800"]:hover,
-.dark [class~="hover:text-slate-700"]:hover,
-.dark [class~="hover:text-slate-600"]:hover {
-  color: #eef1f5 !important;
-}
-
-.dark .recharts-cartesian-grid line {
-  stroke: rgba(148, 163, 184, 0.12);
-}
-
-.dark .recharts-cartesian-axis-tick-value {
-  fill: #8994a5;
-}
-
-.platform-overview-diagram svg {
-  transition: filter 180ms ease;
-}
-
-.dark .platform-overview-diagram svg {
-  filter: invert(0.82) hue-rotate(180deg) saturate(0.9);
-}
 
 button,
 input,
@@ -199,7 +54,8 @@ select:focus-visible,
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.18);
+  background: #bfdbfe;
+  color: #0f172a;
 }
 
 * {
@@ -208,7 +64,7 @@ select:focus-visible,
 }
 
 .dark * {
-  scrollbar-color: #465164 transparent;
+  scrollbar-color: #505465 transparent;
 }
 
 *::-webkit-scrollbar {
@@ -248,9 +104,9 @@ select:focus-visible,
 
 .dark *::-webkit-scrollbar-thumb,
 .dark .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #465164;
+  background: #505465;
 }
 
 .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #5b687c;
+  background: #70758a;
 }

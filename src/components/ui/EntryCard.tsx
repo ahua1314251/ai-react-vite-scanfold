@@ -14,7 +14,7 @@ export function EntryCard({ icon: Icon, label, description, onClick }: EntryCard
     <button
       type="button"
       onClick={onClick}
-      className="group flex flex-col gap-2 p-3.5 bg-white border border-black/[0.07] rounded-xl text-left hover:border-blue-300 hover:shadow-[0_4px_14px_rgba(15,23,42,0.06)] transition-all"
+      className="entry-card group flex flex-col gap-2 p-3.5 bg-white border border-black/[0.07] rounded-xl text-left hover:border-blue-300 hover:shadow-[0_4px_14px_rgba(15,23,42,0.06)] transition-all"
     >
       <div className="flex items-start gap-3">
         <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-blue-50 group-hover:border-blue-100 transition-colors">

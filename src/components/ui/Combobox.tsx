@@ -136,7 +136,10 @@ export function Combobox({
             closePanel();
           }
         }}
-        onBlur={() => onBlur?.()}
+        onBlur={() => {
+          closePanel();
+          onBlur?.();
+        }}
         onClick={() => {
           if (!showPanel) openPanel();
         }}

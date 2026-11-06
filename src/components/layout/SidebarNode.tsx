@@ -59,7 +59,7 @@ export default function SidebarNode({
           activateMenuNode(node, navigate);
           onNavigate?.();
         }}
-        className={`relative w-full flex items-center gap-2.5 ${indent} py-2 text-left rounded-lg ${textSize} transition-all ${
+        className={`sidebar-item ${visuallyActive ? 'sidebar-item-active' : ''} relative w-full flex items-center gap-2.5 ${indent} py-2 text-left rounded-lg ${textSize} transition-all ${
           visuallyActive
             ? 'text-slate-950 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.08)]'
             : subtreeActive

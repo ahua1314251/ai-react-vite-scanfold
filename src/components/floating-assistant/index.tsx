@@ -111,7 +111,7 @@ export default function FloatingAssistant() {
             onMouseLeave={() => setIsHovered(false)}
           >
             <motion.div
-              className="group relative grid h-[50px] w-[50px] cursor-grab place-items-center rounded-2xl border border-blue-100 bg-white/95 text-blue-700 shadow-[0_10px_28px_rgba(37,99,235,0.16),inset_0_1px_0_white] backdrop-blur-xl active:cursor-grabbing"
+              className="assistant-launcher group relative grid h-[50px] w-[50px] cursor-grab place-items-center rounded-2xl border border-blue-100 bg-white/95 text-blue-700 shadow-[0_10px_28px_rgba(37,99,235,0.16),inset_0_1px_0_white] backdrop-blur-xl active:cursor-grabbing"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               aria-label="打开助手"
