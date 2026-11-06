@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { Check, ChevronDown, X } from 'lucide-react';
-import { inputClass } from './classes';
+import { inputClass, listboxClass, listboxOptionClass } from './classes';
 
 export interface SelectOption {
   value: string;
@@ -139,16 +139,14 @@ export function EnumSelect({
         <ul
           id={listboxId}
           role="listbox"
-          className="absolute left-0 top-full z-20 mt-1 max-h-56 w-max min-w-full max-w-[calc(100vw-2rem)] overflow-auto rounded-xl border border-black/[0.09] bg-white py-1 shadow-[0_8px_24px_rgba(15,23,42,0.10)]"
+          className={`${listboxClass} w-max min-w-full max-w-[calc(100vw-2rem)]`}
         >
           {options.map((option, index) => (
             <li
               key={option.value}
               role="option"
               aria-selected={option.value === value}
-              className={`flex cursor-pointer items-center justify-between gap-2 px-3 py-1.5 text-sm ${
-                index === activeIndex ? 'bg-blue-50 text-blue-700' : 'text-slate-700 hover:bg-blue-50'
-              }`}
+              className={`${listboxOptionClass} ${index === activeIndex ? 'dropdown-option-active' : ''}`}
               onMouseDown={event => event.preventDefault()}
               onMouseEnter={() => setActiveIndex(index)}
               onClick={() => commitValue(option.value)}

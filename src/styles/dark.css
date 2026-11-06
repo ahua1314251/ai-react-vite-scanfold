@@ -244,3 +244,14 @@
   background: #555862;
   color: #fff;
 }
+
+.dark .dropdown-list {
+  background-color: #222329 !important;
+  border-color: #393a44 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.dark .dropdown-option:hover,
+.dark .dropdown-option-active {
+  background-color: #383941 !important;
+  color: #f1f2f6 !important;
+}

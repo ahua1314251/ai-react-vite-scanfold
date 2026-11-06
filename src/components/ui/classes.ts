@@ -10,3 +10,10 @@ export const primaryButtonClass =
 
 export const dangerButtonClass =
   'inline-flex items-center gap-1.5 h-9 px-4 rounded-lg text-sm font-medium text-red-600 bg-white border border-red-200 hover:bg-red-50 transition-colors disabled:cursor-not-allowed disabled:opacity-50';
+
+/** Shared listbox appearance for select and searchable combobox. */
+export const listboxClass =
+  'dropdown-list absolute left-0 top-full z-20 mt-1 max-h-56 overflow-auto rounded-xl border border-black/[0.09] bg-white p-1 shadow-[0_8px_24px_rgba(15,23,42,0.10)]';
+
+export const listboxOptionClass =
+  'dropdown-option flex cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors';

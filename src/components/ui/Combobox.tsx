@@ -1,6 +1,5 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Check, ChevronDown, X } from 'lucide-react';
-import { inputClass } from './classes';
+import { inputClass, listboxClass, listboxOptionClass } from './classes';
 
 export interface ComboboxProps {
   id?: string;
@@ -151,16 +150,14 @@ export function Combobox({
         <ul
           id={listboxId}
           role="listbox"
-          className="absolute left-0 right-0 top-full z-20 mt-1 max-h-56 overflow-auto rounded-xl border border-black/[0.09] bg-white py-1 shadow-[0_8px_24px_rgba(15,23,42,0.10)]"
+          className={`${listboxClass} right-0`}
         >
           {filtered.map((option, index) => (
             <li
               key={option}
               role="option"
               aria-selected={index === activeIndex}
-              className={`cursor-pointer px-3 py-1.5 font-mono text-sm ${
-                index === activeIndex ? 'bg-blue-50 text-blue-700' : 'text-slate-700 hover:bg-blue-50'
-              }`}
+              className={`${listboxOptionClass} font-mono ${index === activeIndex ? 'dropdown-option-active' : ''}`}
               onMouseDown={event => event.preventDefault()}
               onMouseEnter={() => setActiveIndex(index)}
               onClick={() => commitValue(option)}

@@ -110,3 +110,10 @@ select:focus-visible,
 .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: #70758a;
 }
+
+/* Listbox hover and keyboard-highlight states. */
+.dropdown-option:hover,
+.dropdown-option-active {
+  background-color: #eaf2ff;
+  color: #1d4ed8;
+}
