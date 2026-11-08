@@ -1,0 +1,4 @@
+import { useId, useRef, type ReactNode } from 'react';
+import { secondaryButtonClass } from './classes';
+export interface PopoverProps { label: string; children: ReactNode; }
+export function Popover({ label, children }: PopoverProps) { const ref = useRef<HTMLDetailsElement>(null); const id = useId(); return <details ref={ref} className="relative inline-block" onKeyDown={event => { if (event.key === 'Escape' && ref.current?.open) { ref.current.open = false; ref.current.querySelector('summary')?.focus(); } }}><summary aria-controls={id} className={`${secondaryButtonClass} cursor-pointer list-none`}>{label}</summary><div id={id} className="absolute right-0 z-30 mt-2 w-64 rounded-xl border border-slate-200 bg-white p-4 text-sm shadow-lg dark:border-slate-700 dark:bg-slate-900">{children}</div></details>; }

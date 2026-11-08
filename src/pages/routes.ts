@@ -1,7 +1,5 @@
 import type { ComponentType } from 'react';
-import { List, PenSquare, type LucideIcon } from 'lucide-react';
-import ExampleList from './example-list';
-import Blog from './blog';
+import type { LucideIcon } from 'lucide-react';
 
 /** 业务页面统一注册入口。path 使用以 / 开头的绝对路径。 */
 export interface BusinessPage {
@@ -11,7 +9,4 @@ export interface BusinessPage {
   Component: ComponentType;
 }
 
-export const businessPages: BusinessPage[] = [
-  { path: '/blog', label: '博客管理', icon: PenSquare, Component: Blog },
-  { path: '/example', label: '列表示例', icon: List, Component: ExampleList },
-];
+export const businessPages: BusinessPage[] = [];

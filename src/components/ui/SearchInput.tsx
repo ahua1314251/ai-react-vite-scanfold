@@ -1,0 +1,4 @@
+import { useId } from 'react';
+import { inputClass, secondaryButtonClass } from './classes';
+export interface SearchInputProps { value: string; onChange: (value: string) => void; label: string; placeholder?: string; loading?: boolean; disabled?: boolean; }
+export function SearchInput({ value, onChange, label, placeholder, loading = false, disabled = false }: SearchInputProps) { const id = useId(); return <div className="flex flex-wrap items-center gap-2"><label htmlFor={id} className="sr-only">{label}</label><input id={id} type="search" className={inputClass} value={value} placeholder={placeholder} disabled={disabled} onChange={event => onChange(event.target.value)} />{value && <button type="button" className={secondaryButtonClass} disabled={disabled} onClick={() => onChange('')}>清除</button>}{loading && <span role="status" className="text-sm text-slate-500">搜索中…</span>}</div>; }

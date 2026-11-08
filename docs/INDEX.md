@@ -2,8 +2,8 @@
 
 源码以 `src/` 为准，不维护源码镜像。
 
-- 页面注册：`src/pages/routes.ts`
-- 业务列表示例：`src/pages/example-list/`
+- 页面注册：`src/pages/routes.ts`（初始无业务页面）。
+- 构建配置：`vite.config.mts`；启动和校验命令见 [README](../README.md)。
 - 布局和菜单：`src/components/layout/`，搜索与侧栏节点各有独立文件。
 - 组件使用说明：[components.md](components.md)。
 - 组件清单：`src/components/ui/index.ts`；具体实现按需读取对应文件。

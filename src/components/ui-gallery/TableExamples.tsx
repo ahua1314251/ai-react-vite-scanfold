@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pagination } from '../ui/Pagination';
+import { DataTable, type TableSort } from '../ui/DataTable';
 import { SectionCard } from '../ui/SectionCard';
 import { StatusBadge } from '../ui/StatusBadge';
 
@@ -14,36 +15,30 @@ const DEMO_ROWS = [
 ];
 
 export default function TableExamples() {
+  const [sort, setSort] = useState<TableSort>({ key: 'code', direction: 'asc' });
+  const sortedRows = [...DEMO_ROWS].sort((a, b) => {
+    const key = sort.key as keyof typeof a;
+    const result = a[key].localeCompare(b[key], 'zh-CN', { numeric: true });
+    return sort.direction === 'asc' ? result : -result;
+  });
   const [pageNo, setPageNo] = useState(1);
   const [pageSize, setPageSize] = useState(5);
 
   return <>
-        <DemoSection id="table" title="表格" description="列表容器与行样式">
-          <SectionCard title="Table" hint="圆角边框 + 表头分割线">
-            <div className="overflow-x-auto rounded-xl border border-black/[0.07]">
-              <table className="min-w-full text-left text-sm">
-                <thead className="bg-slate-50/80 text-xs text-slate-500">
-                  <tr>
-                    <th className="px-4 py-2.5 font-medium">编号</th>
-                    <th className="px-4 py-2.5 font-medium">分类</th>
-                    <th className="px-4 py-2.5 font-medium">状态</th>
-                    <th className="px-4 py-2.5 font-medium">负责人</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {DEMO_ROWS.slice(0, pageSize).map(row => (
-                    <tr key={row.code} className="border-t border-black/[0.05] hover:bg-slate-50/60">
-                      <td className="px-4 py-2.5 font-mono text-slate-800">{row.code}</td>
-                      <td className="px-4 py-2.5 text-slate-600">{row.category}</td>
-                      <td className="px-4 py-2.5">
-                        <StatusBadge status={row.status} />
-                      </td>
-                      <td className="px-4 py-2.5 text-slate-600">{row.owner}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        <DemoSection id="table" title="表格" description="点击列标题可排序">
+          <SectionCard title="DataTable" hint="点击表头切换升序或降序，示例数据为本地模拟数据">
+            <DataTable
+              rows={sortedRows}
+              rowKey={row => row.code}
+              sort={sort}
+              onSortChange={setSort}
+              columns={[
+                { key: 'code', title: '编号', sortable: true, render: row => row.code },
+                { key: 'category', title: '分类', sortable: true, render: row => row.category },
+                { key: 'status', title: '状态', sortable: true, render: row => <StatusBadge status={row.status} /> },
+                { key: 'owner', title: '负责人', sortable: true, render: row => row.owner },
+              ]}
+            />
           </SectionCard>
         </DemoSection>
 
