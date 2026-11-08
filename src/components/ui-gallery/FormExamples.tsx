@@ -3,6 +3,8 @@ import { Combobox } from '../ui/Combobox';
 import { EnumSelect } from '../ui/EnumSelect';
 import { Field } from '../ui/Field';
 import { SectionCard } from '../ui/SectionCard';
+import { MarkdownEditor } from '../ui/MarkdownEditor';
+import { MarkdownPreview } from '../ui/MarkdownPreview';
 import {
 inputClass
 } from '../ui/classes';
@@ -10,11 +12,20 @@ inputClass
 import DemoSection from './DemoSection';
 
 export default function FormExamples() {
+  const [markdown, setMarkdown] = useState('# 示例标题\n\n支持 **粗体**、[链接](https://example.com) 和列表：\n\n- 第一项\n- 第二项');
   const [name, setName] = useState('');
   const [region, setRegion] = useState('east');
   const [category, setCategory] = useState('设计');
 
   return <>
+        <DemoSection id="markdown" title="Markdown" description="受控编辑器与可独立使用的预览组件">
+          <SectionCard title="MarkdownEditor / MarkdownPreview">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <MarkdownEditor value={markdown} onChange={setMarkdown} label="编辑内容" />
+              <div><p className="mb-2 text-sm font-medium">独立预览</p><MarkdownPreview value={markdown} /></div>
+            </div>
+          </SectionCard>
+        </DemoSection>
         <DemoSection id="forms" title="表单字段" description="Field + 标准 inputClass">
           <SectionCard title="Field / Input" hint="校验错误通过 Field.error 插槽展示">
             <div className="flex flex-wrap gap-3">

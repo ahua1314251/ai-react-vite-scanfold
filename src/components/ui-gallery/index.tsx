@@ -6,6 +6,7 @@ import {
 primaryButtonClass
 } from '../ui/classes';
 import AssistantExample from './AssistantExample';
+import AdvancedExamples from './AdvancedExamples';
 import BasicExamples from './BasicExamples';
 import FormExamples from './FormExamples';
 import TableExamples from './TableExamples';
@@ -36,6 +37,7 @@ export default function UiGalleryPage() {
         <BasicExamples />
         <FormExamples />
         <TableExamples />
+        <AdvancedExamples />
         <AssistantExample />
       </div>
     </div>

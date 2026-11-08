@@ -1,0 +1,5 @@
+import type { ReactNode } from 'react';
+import { EmptyState, LoadingState } from './Feedback';
+export interface DataTableColumn<T> { key: string; title: ReactNode; render: (row: T) => ReactNode; }
+export interface DataTableProps<T> { columns: DataTableColumn<T>[]; rows: T[]; rowKey: (row: T) => string; loading?: boolean; emptyMessage?: string; }
+export function DataTable<T>({ columns, rows, rowKey, loading = false, emptyMessage }: DataTableProps<T>) { if (loading) return <LoadingState />; if (!rows.length) return <EmptyState title={emptyMessage} />; return <div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr className="border-b border-slate-200">{columns.map(column => <th scope="col" className="px-3 py-3 font-medium" key={column.key}>{column.title}</th>)}</tr></thead><tbody>{rows.map(row => <tr className="border-b border-slate-100" key={rowKey(row)}>{columns.map(column => <td className="px-3 py-3" key={column.key}>{column.render(row)}</td>)}</tr>)}</tbody></table></div>; }

@@ -1,0 +1,6 @@
+import { useRef, type KeyboardEvent } from 'react';
+import { secondaryButtonClass } from './classes';
+export interface DropdownMenuItem { label: string; onSelect: () => void; disabled?: boolean; }
+export interface DropdownMenuProps { label: string; items: DropdownMenuItem[]; }
+/** Native disclosure provides keyboard-accessible open and close behavior. */
+export function DropdownMenu({ label, items }: DropdownMenuProps) { const ref = useRef<HTMLDetailsElement>(null); const keyDown = (event: KeyboardEvent<HTMLDetailsElement>) => { if (event.key === 'Escape' && ref.current?.open) { ref.current.open = false; ref.current.querySelector('summary')?.focus(); } }; return <details ref={ref} className="relative inline-block" onKeyDown={keyDown}><summary className={`${secondaryButtonClass} cursor-pointer list-none`}>{label}</summary><div className="absolute right-0 z-20 mt-1 min-w-40 rounded-xl border border-slate-200 bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-900">{items.map((item, index) => <button key={`${item.label}-${index}`} type="button" disabled={item.disabled} className="block w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-100 disabled:opacity-50 dark:hover:bg-slate-800" onClick={() => { if (ref.current) ref.current.open = false; item.onSelect(); }}>{item.label}</button>)}</div></details>; }

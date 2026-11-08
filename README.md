@@ -12,6 +12,14 @@ npm run check     # 类型检查和生产构建
 
 图标使用 lucide-react 0.294.0；选用该版本存在的名称（例如 `PenSquare`）。
 
+## Markdown 通用组件
+
+`MarkdownEditor` 是受控编辑器，通过 `value` 和 `onChange` 管理内容，支持标签、占位文字、行数和禁用状态；`MarkdownPreview` 可以独立渲染 Markdown。两者均从 `src/components/ui` 导出，可在组件 Gallery 查看示例。预览支持表格、任务列表等 GFM 语法，不渲染原始 HTML。
+
+## 通用交互组件
+
+组件 Gallery 展示对话框、提示、表格、状态、文件选择、日期、标签输入、选项卡、操作菜单和同步表单校验。通用组件和类型从 `src/components/ui` 导出；`ImageUpload` 只返回选择的文件，上传、预览地址和持久化由调用方管理。`DataTable` 接收列定义和数据，分页可组合现有 `Pagination`。组件用途和限制详见 [通用组件说明](docs/components.md)。
+
 ## 开发业务页面
 
 1. 在 `src/pages/` 新建页面；本地列表示例见 `src/pages/example-list/`。
