@@ -28,10 +28,34 @@ npm run check     # 类型检查和生产构建
 
 ## 开发业务页面
 
-1. 在 `src/pages/` 新建页面；列表组件可参考 `#/gallery`。
+1. 在 `src/features/<功能>/` 新建业务功能或页面；列表组件可参考 `#/gallery`。简单页面可以只创建一个文件。
 2. 在 `src/pages/routes.ts` 注册路径、标题、图标和组件，路由和菜单由它生成。路径必须以 `/` 开头。
 3. 替换示例数据；接入真实异步接口时实现加载、失败、重试和空状态。
 4. 运行 `npm run check`，并检查相关页面交互。
+
+### 业务模块与 mock 数据
+
+按功能或页面组织业务代码。以下仅为示意，按需要创建文件，不要求每个模块都有相同目录：
+
+```text
+src/
+  features/
+    articles/
+      ArticleListPage.tsx
+      ArticleCard.tsx
+      mock.ts
+      types.ts
+    categories/
+      CategoryPage.tsx
+      mock.ts
+  pages/routes.ts              # 统一注册业务页面
+  components/ui/               # 通用组件
+```
+
+- 页面独有的组件、类型、工具函数、数据访问和 mock 放在对应功能目录；示例数据较多时按用途拆分，避免所有功能共用一个大文件。不要为简单页面制造不必要的文件。
+- 文章等业务实体若被多个功能共同读写，应按实体建立共享的数据模块，通过明确接口访问同一份状态和 mock；不要在不同页面复制各自独立的数据，避免修改不同步。
+- 优先通过模块公开接口访问其他功能；跨功能共享的类型和数据接口应先确定负责人和依赖关系。目录结构和数据来源以实际需求为准。
+- 已有项目按既有结构开发，除非任务需要或用户要求，不做无关迁移。接入真实服务时替换对应模块的数据访问，并处理加载、空、失败和重试状态。
 
 业务页面注册表初始为空；Gallery 中的数据仅供演示。页面一般使用 `PageContext` 和 `SectionCard`。组件导出清单见 `src/components/ui/index.ts`，实现按需查看。`#/gallery` 展示组件；`src/components/home/` 是首页占位。未匹配的路由显示 404。
 
@@ -40,7 +64,7 @@ npm run check     # 类型检查和生产构建
 ## 维护约定
 
 - 路由和菜单：业务页面在 `src/pages/routes.ts` 注册；特殊菜单在 `src/components/layout/menu-config.ts` 配置。
-- 通用组件和控件样式放在 `src/components/ui/`，优先复用；页面专属代码留在对应页面目录。
+- 通用组件和控件样式放在 `src/components/ui/`，优先复用；功能专属页面、组件和 mock 放在对应 `src/features/<功能>/` 目录。
 - 全局基础样式在 `src/styles/index.css`，暗色主题变量和兼容样式在 `src/styles/dark.css`。调整主题时优先修改变量，新增组件时同时检查亮色和暗色状态。
 - 顶栏账户与消息目前是明确标注的演示占位，接入服务时替换 `src/components/layout/HeaderAccount.tsx` 中的数据和交互。悬浮助手默认关闭，在 `src/config.ts` 开启，当前对话接口是本地 mock。
 - 修改后运行 `npm run check`，并在浏览器验证受影响的页面和交互。
