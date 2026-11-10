@@ -2,6 +2,7 @@
 
 源码以 `src/` 为准，不维护源码镜像。
 
+- 项目总览、模块和共享依赖：根目录 `PROJECT_INDEX.md`。
 - 页面注册：`src/pages/routes.ts`（初始无业务页面）。
 - 构建配置：`vite.config.mts`；启动和校验命令见 [README](../README.md)。
 - 布局和菜单：`src/components/layout/`，搜索与侧栏节点各有独立文件。
